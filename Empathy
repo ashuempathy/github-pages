@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empathy & Sympathy Statements Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .search-container {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 20px 0;
+            z-index: 100;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            box-sizing: border-box;
+        }
+
+        .statement-card {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .situation {
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .statement {
+            color: #34495e;
+            margin-left: 15px;
+        }
+
+        .type-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+
+        .empathy-tag { background-color: #e8f5e9; color: #2e7d32; }
+        .sympathy-tag { background-color: #fff3e0; color: #ef6c00; }
+
+        .note {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fffde7;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for situations (e.g., 'loss', 'illness', 'job') or type 'empathy'/'sympathy'...">
+    </div>
+
+    <div id="resultsContainer"></div>
+
+    <script>
+        const statements = [
+            {
+                situation: "Loss of a loved one",
+                type: "sympathy",
+                statement: "I'm so sorry for your loss. Please know that I'm here for you during this difficult time."
+            },
+            {
+                situation: "Job loss",
+                type: "empathy",
+                statement: "This must be really challenging. I can imagine how uncertain things must feel right now."
+            },
+            {
+                situation: "Illness diagnosis",
+                type: "empathy",
+                statement: "That sounds really scary. How are you feeling about everything?"
+            },
+            {
+                situation: "Divorce or breakup",
+                type: "sympathy",
+                statement: "I'm sorry to hear about what you're going through. Breakups can be so painful."
+            },
+            {
+                situation: "Financial difficulties",
+                type: "empathy",
+                statement: "Financial stress can feel overwhelming. Would you like to talk about it?"
+            },
+            {
+                situation: "Academic stress",
+                type: "empathy",
+                statement: "It sounds like you're carrying a lot right now. How can I best support you?"
+            },
+            {
+                situation: "Pet loss",
+                type: "sympathy",
+                statement: "Losing a pet is losing a family member. I know how much they meant to you."
+            }
+        ];
+
+        const searchInput = document.getElementById('searchInput');
+        const resultsContainer = document.getElementById('resultsContainer');
+
+        function displayResults(filteredStatements) {
+            resultsContainer.innerHTML = filteredStatements.map(statement => `
+                <div class="statement-card">
+                    <div class="situation">
+                        ${statement.situation}
+                        <span class="type-tag ${statement.type}-tag">${statement.type}</span>
+                    </div>
+                    <div class="statement">${statement.statement}</div>
+                </div>
+            `).join('');
+        }
+
+        function searchStatements() {
+            const query = searchInput.value.toLowerCase();
+            const filtered = statements.filter(statement => 
+                statement.situation.toLowerCase().includes(query) ||
+                statement.statement.toLowerCase().includes(query) ||
+                statement.type.includes(query)
+            );
+            displayResults(filtered);
+        }
+
+        // Initial display of all statements
+        displayResults(statements);
+
+        // Add event listener for search
+        searchInput.addEventListener('keyup', searchStatements);
+    </script>
+
+    <div class="note">
+        <strong>Usage tips:</strong> Try searching for:
+        <ul>
+            <li>Specific situations (e.g., "loss", "illness", "job")</li>
+            <li>Type of statement ("empathy" or "sympathy")</li>
+            <li>Combinations like "empathy for illness" or "sympathy for loss"</li>
+        </ul>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empathy & Sympathy Statements Guide</title>
+    <style>
+        /* Previous CSS styles remain the same */
+
+        /* Add this new style for the name design */
+        .designer-credit {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8em;
+            color: #2c3e50;
+            animation: fadeInUp 1.5s ease-in-out;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding: 8px 15px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid #e0e0e0;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Add Google Font for the name design */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+    </style>
+</head>
+<body>
+    <!-- Add this designer credit div just before closing body tag -->
+    <div class="designer-credit">Crafted by Ajith</div>
+
+    <!-- Previous content remains the same -->
+
+    <script>
+        // Previous JavaScript remains the same
+    </script>
+</body>
+</html>
